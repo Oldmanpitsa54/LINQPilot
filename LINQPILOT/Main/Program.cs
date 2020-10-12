@@ -11,31 +11,19 @@ namespace OOPExamples
             var banks = GenerateBanks();
             var users = GenerateUsers(banks);
 
-
-
-
-
-
-
-
-
             var MostPoorUsers = users.OrderBy(x => x.Transactions.Sum(y => y.Value)).Take(4).Select(x => new
             {
                 TransactionSum = x.Transactions.Sum(y => y.Value),
                 User = x
             });
 
-
-
             //1) Сделать выборку всех Пользователей, имя + фамилия которых длиннее чем 12 символов.
 
             var NameMoreThan12SymbUsers = users.Where(x => (x.FirstName + x.LastName).Length > 12);
 
-
             //2) Сделать выборку всех транзакций (в результате должен получится список из 1000 транзакций)
 
             var allTransactions = banks.SelectMany(x => x.Transactions);
-
 
             //3) Вывести Банк: и всех его пользователей (Имя + фамилия + количество транзакий в гривне) отсортированных по Фамилии по убиванию. в таком виде :
             //   Имя банка 
@@ -63,8 +51,6 @@ namespace OOPExamples
                 .FirstOrDefault();
 
             //5) Найти Пользователей(НЕ АДМИНОВ), которые произвели больше всего транзакций в определенной из валют (UAH,USD,EUR)
-
-
             //то есть найти трёх пользователей: 1й который произвел больше всего транзакций в гривне, второй пользователь, который произвел больше всего транзакций в USD 
             //и третьего в EUR
 
