@@ -44,11 +44,13 @@ namespace OOPExamples
             }
 
             //4) Сделать выборку всех Пользователей типа Admin, у которых счет в банке, в котором больше всего транзакций
+
             var admins = users.Where(x => x.Type == UserType.Admin);
             var mostTransactionsBank = banks
                 .OrderBy(x => x.Transactions.Count)
                 .ThenBy(x => x.Name)
                 .FirstOrDefault();
+            var MostTransBankAdmins = admins.Where(x => x.Bank == mostTransactionsBank);
 
             //5) Найти Пользователей(НЕ АДМИНОВ), которые произвели больше всего транзакций в определенной из валют (UAH,USD,EUR)
             //то есть найти трёх пользователей: 1й который произвел больше всего транзакций в гривне, второй пользователь, который произвел больше всего транзакций в USD 
